@@ -53,7 +53,7 @@ public class Project1_DFS
 	    you will implement. It would be good to make a class in a separate file.
 	     */
 
-		readFile("tests/dfs/test2.in");
+		readFile("tests/dfs/test5.in");
 		
 		Scanner s = new Scanner(System.in);
 		//Insert your code here
@@ -113,16 +113,25 @@ public class Project1_DFS
 	
 	public static void DFS(Project1_DFS graph, int S, int N)
 	{
+
 		boolean visited[] = new boolean[N+1];			//save visited vertices	
 		Custom_Stack stack = new Custom_Stack(N);		//custom stack object
 		
-		visited[S] = true;		//mark started vertices visited
+		for (int i = 1; i < N + 1; i++)		//mark all vertices as not visited.
+			visited[i] = false;
+		
 		stack.push(S);			//enqueue the start vertex
 		
 		while(!stack.isEmpty())
 		{
 			int out = stack.pop();
-			System.out.println(out);
+			
+			if(visited[out] == false)
+			{
+				System.out.println(out);
+				visited[out] = true;
+			}
+			
 			Iterator<Integer> it = graph.adjListArray[out].listIterator();
 			
 			while(it.hasNext())
@@ -130,7 +139,7 @@ public class Project1_DFS
 				int next = it.next();
 				if(visited[next] == false)
 				{
-					visited[next] = true;
+					//visited[next] = true;
 					stack.push(next);
 				}
 			}
