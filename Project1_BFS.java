@@ -2,23 +2,18 @@
  * Please list your project group member information below
  *
  *						Name			Section CRN
- * Group Member 1:
- * Group Member 2:
- * Group Member 3:
+ * Group Member 1:		Ethan Kim		12721
+ * Group Member 2:		Bowen Xu		12721
+ * Group Member 3:		Jiamin Xie		12721
  */
 
 import java.util.Scanner;
 
 //You may use ArrayList and LinkedList only for building an Adjacency List.
 //Any additional imports from java.util are forbidden
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.ListIterator;
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.lang.StringBuilder;
 import java.util.Iterator;
 
 /*
@@ -31,6 +26,7 @@ public class Project1_BFS
 	private LinkedList<Integer> adjListArray[];
 	private int V;
 	
+	@SuppressWarnings("unchecked")
 	Project1_BFS(int V)	//constructor
 	{
 		this.V = V;
@@ -50,10 +46,36 @@ public class Project1_BFS
 	     */
 
 		
-		readFile("tests/bfs/test6.in");
+		//readFile("tests/bfs/test2.in");
 
-		Scanner s = new Scanner(System.in);
-		//Insert your code here
+		Scanner scan = new Scanner(System.in);
+
+//		FileReader fileReader = new FileReader(filename);
+//		BufferedReader in = new BufferedReader(fileReader);
+//		
+//		String s = in.readLine();
+//
+//		Scanner scan = new Scanner(s);
+			
+		int N = scan.nextInt();
+		int M = scan.nextInt();
+		int S = scan.nextInt();
+		
+		Project1_BFS graph = new Project1_BFS(N);			//create a graph with N number of vertices
+		
+		for (int i = 0; i < M; i++)			//add edges to following vertices
+		{
+//			String lines = in.readLine();
+//			Scanner sc = new Scanner(lines);
+			int src = scan.nextInt();
+			int dest = scan.nextInt();			
+			addEdge(graph, src, dest);
+		}
+		
+		//printGraph(graph);
+		scan.close();
+		
+		BFS(graph, S, N);
 	}
 	
 	static public void addEdge(Project1_BFS graph, int src, int dest)
@@ -108,6 +130,9 @@ public class Project1_BFS
 			System.out.println(distanceArray[i]);
 	}
 	
+	
+	/*
+	// for self test
 	public static void readFile(String filename) throws FileNotFoundException, IOException
 	{
 		FileReader fileReader = new FileReader(filename);
@@ -137,6 +162,6 @@ public class Project1_BFS
 		
 		BFS(graph, S, N);
 	}
+	*/
 }
-
 
