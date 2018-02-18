@@ -1,5 +1,3 @@
-package DFS;
-
 import java.util.NoSuchElementException;
 
 //custom stack using array

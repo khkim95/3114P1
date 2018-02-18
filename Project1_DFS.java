@@ -1,29 +1,21 @@
-package DFS;
-
 /*
  * Please list your project group member information below
  *
  *						Name			Section CRN
- * Group Member 1:
- * Group Member 2:
- * Group Member 3:
+ * Group Member 1:		Ethan Kim		12721
+ * Group Member 2:		Bowen Xu		12721
+ * Group Member 3:		Jiamin Xie		12721
  */
 
 import java.util.Scanner;
 
-import BFS.Custom_Queue;
-import BFS.Project1_BFS;
 
 //You may use ArrayList and LinkedList only for building an Adjacency List.
 //Any additional imports from java.util are forbidden
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.lang.StringBuilder;
 
 /*
 In general, you should not need any additional imports. If you want to import something that you find absolutely
@@ -35,6 +27,7 @@ public class Project1_DFS
 	protected LinkedList<Integer> adjListArray[];
 	private int V;
 	
+	@SuppressWarnings("unchecked")
 	Project1_DFS(int V)	//constructor
 	{
 		this.V = V;
@@ -53,10 +46,24 @@ public class Project1_DFS
 	    you will implement. It would be good to make a class in a separate file.
 	     */
 
-		readFile("tests/dfs/test5.in");
+		Scanner scan = new Scanner(System.in);
 		
-		Scanner s = new Scanner(System.in);
-		//Insert your code here
+			
+		int N = scan.nextInt();
+		int M = scan.nextInt();
+		int S = scan.nextInt();
+		
+		Project1_DFS graph = new Project1_DFS(N);			//create a graph with N number of vertices
+		
+		for (int i = 0; i < M; i++)			//add edges to following vertices
+		{
+			int src = scan.nextInt();
+			int dest = scan.nextInt();			
+			addEdge(graph, src, dest);
+		}
+		
+		scan.close();
+		DFS(graph, S, N, M);
 	
     }
 	
@@ -80,7 +87,7 @@ public class Project1_DFS
 		}
 	}
 	
-	
+	/*
 	public static void readFile(String filename) throws FileNotFoundException, IOException
 	{
 		FileReader fileReader = new FileReader(filename);
@@ -110,12 +117,13 @@ public class Project1_DFS
 		
 		DFS(graph, S, N);
 	}
+	*/
 	
-	public static void DFS(Project1_DFS graph, int S, int N)
+	public static void DFS(Project1_DFS graph, int S, int N, int M)
 	{
 
 		boolean visited[] = new boolean[N+1];			//save visited vertices	
-		Custom_Stack stack = new Custom_Stack(N);		//custom stack object
+		Custom_Stack stack = new Custom_Stack(M);		//custom stack object
 		
 		for (int i = 1; i < N + 1; i++)		//mark all vertices as not visited.
 			visited[i] = false;
