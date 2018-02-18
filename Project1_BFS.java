@@ -45,17 +45,8 @@ public class Project1_BFS
 	    you will implement. It would be good to make a class for it in a separate file.
 	     */
 
-		
-		//readFile("tests/bfs/test2.in");
 
 		Scanner scan = new Scanner(System.in);
-
-//		FileReader fileReader = new FileReader(filename);
-//		BufferedReader in = new BufferedReader(fileReader);
-//		
-//		String s = in.readLine();
-//
-//		Scanner scan = new Scanner(s);
 			
 		int N = scan.nextInt();
 		int M = scan.nextInt();
@@ -65,8 +56,6 @@ public class Project1_BFS
 		
 		for (int i = 0; i < M; i++)			//add edges to following vertices
 		{
-//			String lines = in.readLine();
-//			Scanner sc = new Scanner(lines);
 			int src = scan.nextInt();
 			int dest = scan.nextInt();			
 			addEdge(graph, src, dest);
