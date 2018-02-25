@@ -24,6 +24,7 @@ public class Custom_Min_Heap
 		return currentIndex == capacity;
 	}
 	
+	// add element
 	public void add(item vertex) {
 		if (!isFull()) {
 			heap[currentIndex] = vertex;
@@ -33,6 +34,7 @@ public class Custom_Min_Heap
 		}else throw new IndexOutOfBoundsException("OVERFLOW");	
 	}
 	
+	// get the min value and remove it
 	public item extract_min () {
 		if(!isEmpty()) {
 			item min = heap[0];	//get min
@@ -47,7 +49,7 @@ public class Custom_Min_Heap
 		}else throw new IndexOutOfBoundsException("OVERFLOW");		
 	}
 	
-	
+	// swap two vertex
 	protected void swap(int pos1, int pos2) {
 		//swap index info first
 		bookeep[heap[pos1].V] = pos2;
@@ -58,6 +60,7 @@ public class Custom_Min_Heap
 		heap[pos2] = temp;
 	}
 
+	// shift vertex up
 	public void heapifyUp (int index, int weight) {
 		if(hasParent(index)) {
 			int parentIndex = getParentIndex(index);
@@ -71,6 +74,7 @@ public class Custom_Min_Heap
 		}
 	}
 	
+	// shift vertex down
 	public void heapifyDown (int index, int weight) {
 		int left;
 		int right;
@@ -82,9 +86,9 @@ public class Custom_Min_Heap
 				if(heap[index].key > heap[left].key) {
 					swap(left,index);
 					index = left;
-				}else return ;
+				} else return ;
 				
-			}else{		//not a leaf condition
+			}else {		//not a leaf condition
 				left = getLeftChildIndex(index);
 				right = getRightChildIndex(index);
 				if(heap[right].key <= heap[left].key && weight > heap[right].key) {
@@ -102,7 +106,7 @@ public class Custom_Min_Heap
 	public void decreaseKey(int i, int weight) {
 	    if (heap[bookeep[i]].key < weight) {
 
-	        throw new IllegalArgumentException("Key is larger than the original key");
+	        throw new IllegalArgumentException("Key is larger than original key.");
 	    }
 	    heap[bookeep[i]].key = weight;
 	    heapifyUp(bookeep[i],weight);
