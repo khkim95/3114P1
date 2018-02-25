@@ -23,7 +23,7 @@ necessary, ask about it on Piazza.
 
 public class Project1_BFS 
 {	
-	private LinkedList<Integer> adjListArray[];
+	private LinkedList<Integer> adjListArray[];			//linked list to store the graph
 	private int V;
 	
 	@SuppressWarnings("unchecked")
@@ -102,12 +102,12 @@ public class Project1_BFS
 			int out = queue.remove();
 			Iterator<Integer> it = graph.adjListArray[out].listIterator();
 			
-			while(it.hasNext())
+			while(it.hasNext())		//while the queue has adjacent vertices
 			{
 				int next = it.next();
 				if(visited[next] == false)
 				{
-					visited[next] = true;
+					visited[next] = true;		//only if the vertex has not been visited
 					queue.add(next);
 					distanceArray[next] = distanceArray[out]+1;
 				}
