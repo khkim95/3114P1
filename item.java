@@ -8,4 +8,9 @@ public class item {
 			this.V = V;
 			this.key = key;
 		}
+		public String toString()
+		{
+			return String.format("%d - %d", V, key);
+		}
+
 }

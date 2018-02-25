@@ -108,7 +108,9 @@ public class Custom_Min_Heap
 	    heapifyUp(bookeep[i],weight);
 	    heapifyDown(bookeep[i],weight);
 	}
-
+	public int getVertexIndex (int vert) {
+		return bookeep[vert];
+	}
 	private int getParentIndex(int childIndex) {
 	    return (childIndex-1) / 2;
 	}
